@@ -3,6 +3,7 @@ package base;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.BeforeTest;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -10,6 +11,7 @@ import java.net.URL;
 public class TestBase {
     protected static AppiumDriver driver;
 
+    @BeforeTest
     public void setUp() throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platformName", "iOS");
@@ -20,6 +22,4 @@ public class TestBase {
         caps.setCapability("appium:app", "/Users/abanniub/Library/Developer/Xcode/DerivedData/Runner-bszxftpnggutcjgsqnjriwqeqvol/Build/Products/Debug-development-iphonesimulator/Runner.app");
         driver = new IOSDriver(new URL("http://localhost:4723/"), caps);
     }
-
-
 }
