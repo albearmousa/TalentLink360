@@ -77,6 +77,7 @@ public class TestLoginScreen extends TestBase{
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 // Check if the "See you later" text exists
+        //
         WebElement checkoutMessage = driver.findElement(By.name("See you later, Mahmoud"));
 
 // Assert the message is displayed
