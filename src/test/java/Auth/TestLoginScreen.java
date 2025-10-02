@@ -2,6 +2,9 @@ package Auth;
 
 import base.TestBase;
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -13,9 +16,9 @@ import java.time.Duration;
 
 public class TestLoginScreen extends TestBase{
 
-    @Test(priority = 1)
+    @Test (priority = 1)
     public void enter_valid_credential() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Email")));
 
@@ -29,7 +32,7 @@ public class TestLoginScreen extends TestBase{
 
     }
 
-    @Test(priority = 2)
+    @Test (priority = 2)
     public void checkIn() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -61,8 +64,7 @@ public class TestLoginScreen extends TestBase{
 
         }
 
-        WebElement ok = driver.findElement(AppiumBy.accessibilityId("Ok"));
-        ok.click();
+        driver.findElement(AppiumBy.accessibilityId("Ok")).click();
     }
 
     @Test(priority = 3)
@@ -70,10 +72,24 @@ public class TestLoginScreen extends TestBase{
         Thread.sleep(2000);
         driver.findElement(By.xpath("//XCUIElementTypeImage[starts-with(@name, 'Check Out')]")
         ).click();
-        WebElement ok = driver.findElement(AppiumBy.accessibilityId("Ok"));
-        ok.click();
-    }
 
+        // Set implicit wait (add this in your setup method)
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+// Check if the "See you later" text exists
+        WebElement checkoutMessage = driver.findElement(By.name("See you later, Mahmoud"));
+
+// Assert the message is displayed
+        Assert.assertTrue(checkoutMessage.isDisplayed(), "Checkout message should be displayed");
+
+        String messageText = checkoutMessage.getAttribute("value");
+        System.out.println("✓ Successfully verified checkout message: " + messageText);
+
+// Tap on Ok button
+        driver.findElement(By.name("Ok")).click();
+        System.out.println("✓ Successfully tapped 'Ok' button");
+
+    }
 }
 
 
