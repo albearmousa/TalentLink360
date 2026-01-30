@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" verbose="2" preserve-order="true">
+<suite name="All Test Suite" verbose="0" preserve-order="true">
     <test name="TalentLink Tests">
         <classes>
-            <class name="Auth.TestLoginScreen"/>
-            <class name="Auth.TestCheckInAndCheckout"/>
-            <class name="Auth.TestVisitAndTasks"/>
+            <class name="tests.LoginTest"/>
             <!-- Add other test classes here -->
         </classes>
     </test>
