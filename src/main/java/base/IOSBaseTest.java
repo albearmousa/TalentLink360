@@ -3,20 +3,23 @@ package base;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 
 public class IOSBaseTest {
-    public AppiumDriverLocalService service;
     protected IOSDriver driver;
+    protected AppiumDriverLocalService service;
 
+    @BeforeClass
+    public void startAppium() {
+        service = AppiumDriverLocalService.buildDefaultService();
+        service.start();
+    }
 
     @BeforeMethod
     public void setUp() {
-
-        service = AppiumDriverLocalService.buildDefaultService();
-        service.start();
-
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platformName", "ios");
         caps.setCapability("appium:deviceName", "iPhone 14 Pro");
@@ -32,7 +35,11 @@ public class IOSBaseTest {
         caps.setCapability("appium:wdaLaunchTimeout", 100000);
         caps.setCapability("appium:wdaConnectionTimeout", 100000);
         driver = new IOSDriver(service.getUrl(), caps);
-        System.out.println(driver.getCapabilities().getCapability("bundleId"));
     }
 
+    @AfterSuite(alwaysRun = true)
+    public void stopEverything() {
+        if (driver != null) driver.quit();
+        if (service != null) service.stop();
+    }
 }

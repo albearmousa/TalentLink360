@@ -30,7 +30,7 @@ public class LoginPage extends IOSActions {
         );
     }
 
-    public void login(String mail, String pass, String code) {
+    public HomePage login(String mail, String pass, String code) {
 
         waitForElement(email);
         email.sendKeys(mail);
@@ -38,6 +38,7 @@ public class LoginPage extends IOSActions {
         companyCode.sendKeys(code);
         rememberMe.click();
         loginButton.click();
+        return new HomePage(driver);
     }
 
 }
