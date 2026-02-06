@@ -3,7 +3,7 @@ package base;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
@@ -25,19 +25,23 @@ public class IOSBaseTest {
         caps.setCapability("appium:deviceName", "iPhone 14 Pro");
         caps.setCapability("appium:automationName", "XCUITest");
         caps.setCapability("appium:platformVersion", "26.1");
-        //caps.setCapability("noReset", true);
-        //  caps.setCapability("fullReset", false);
-        caps.setCapability("appium:autoAcceptAlerts", "true");
+//        caps.setCapability("noReset", true);
+//        caps.setCapability("fullReset", false);
+        caps.setCapability("appium:autoAcceptAlerts", true);
         caps.setCapability("autoGrantPermissions", true);
+        caps.setCapability("autoDismissAlerts", true);
         caps.setCapability("udid", "00008120-000A6C2411F0201E");
         caps.setCapability("appium:app", "/Users/albearmousa/Library/Developer/Xcode/DerivedData/Runner-czeogqgpqajicbecaqqbknallehz/Build/Products/Release-production-iphoneos/Runner.app");
         caps.setCapability("appium:appLaunchTimeout", 100000); // 60 seconds
         caps.setCapability("appium:wdaLaunchTimeout", 100000);
         caps.setCapability("appium:wdaConnectionTimeout", 100000);
+        caps.setCapability("appium:newCommandTimeout", 500);
+        caps.setCapability("appium:usePrebuiltWDA", true);
+        caps.setCapability("appium:useNewWDA", false);
         driver = new IOSDriver(service.getUrl(), caps);
     }
 
-    @AfterSuite(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void stopEverything() {
         if (driver != null) driver.quit();
         if (service != null) service.stop();

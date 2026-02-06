@@ -14,8 +14,13 @@ public class AppiumUtils {
         this.driver = driver;
     }
 
-    protected void waitForElement(WebElement element) {
+    protected void waitForElementVisibility(WebElement element) {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOf(element));
+    }
+
+    protected void waitForElementClickable(WebElement element) {
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(element));
     }
 }

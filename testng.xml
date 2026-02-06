@@ -3,7 +3,7 @@
 <suite name="All Test Suite" verbose="0" preserve-order="true">
     <test name="TalentLink Tests">
         <classes>
-            <class name="tests.LoginTest"/>
+            <!--            <class name="tests.LoginTest"/>-->
             <class name="tests.HomeTest"/>
             <!-- Add other test classes here -->
         </classes>

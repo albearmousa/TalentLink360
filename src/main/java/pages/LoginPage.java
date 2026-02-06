@@ -32,7 +32,7 @@ public class LoginPage extends IOSActions {
 
     public HomePage login(String mail, String pass, String code) {
 
-        waitForElement(email);
+        waitForElementVisibility(email);
         email.sendKeys(mail);
         password.sendKeys(pass);
         companyCode.sendKeys(code);

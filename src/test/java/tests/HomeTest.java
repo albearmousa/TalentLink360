@@ -21,8 +21,15 @@ public class HomeTest extends IOSBaseTest {
     }
 
     @Test
-    public void homeTitleIsVisible() {
+    public void test_home_screen() throws InterruptedException {
         assertTrue(homePage.isHomeDisplayed());
+        homePage.setCheck_in();
+        homePage.allowLocationOnceIfPresent();
+        homePage.setCheck_in_msg();
+        homePage.setCheck_out();
+        homePage.setCheck_in_msg();
+        homePage.setAnnualLeaveBalance();
+
     }
 }
 
