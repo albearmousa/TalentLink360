@@ -7,6 +7,7 @@ import utils.ConfigReader;
 
 public class DriverFactory {
 
+    //create IOS driver
     public static IOSDriver createIOSDriver(AppiumDriverLocalService service) {
         XCUITestOptions options = new XCUITestOptions();
         options.setPlatformName(ConfigReader.getProperty("platformName"));

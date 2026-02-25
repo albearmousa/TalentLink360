@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 
 public class LoginTest extends IOSBaseTest {
-    LoginPage loginPage;
+    private LoginPage loginPage;
 
     @Test(priority = 2, dataProvider = "validLoginData")
     public void userCanLoginSuccessfully(String email, String pass, String code) {

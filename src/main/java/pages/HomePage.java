@@ -1,13 +1,13 @@
 package pages;
 
-import actions.IOSActions;
+import actions.MobileActions;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage extends IOSActions {
+public class HomePage extends MobileActions {
 
     @iOSXCUITFindBy(accessibility = "Home")
     private WebElement homeTitle;
@@ -27,7 +27,7 @@ public class HomePage extends IOSActions {
     }
 
     public boolean isHomeDisplayed() {
-        waitForElementVisibility(homeTitle);
+        waitForElementVisible(homeTitle);
         return homeTitle.isDisplayed();
     }
 

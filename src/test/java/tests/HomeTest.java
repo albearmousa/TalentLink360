@@ -29,7 +29,6 @@ public class HomeTest extends IOSBaseTest {
         homePage.setCheck_out();
         homePage.setCheck_in_msg();
         homePage.setAnnualLeaveBalance();
-
     }
 }
 

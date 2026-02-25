@@ -4,15 +4,15 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
-import utils.AppiumUtils;
+import pages.BasePage;
 
 import java.time.Duration;
 import java.util.Collections;
 
-public class IOSActions extends AppiumUtils {
+public class MobileActions extends BasePage {
     protected AppiumDriver driver;
 
-    public IOSActions(AppiumDriver driver) {
+    public MobileActions(AppiumDriver driver) {
         super(driver);
         this.driver = driver;
     }

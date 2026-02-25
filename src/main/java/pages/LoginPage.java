@@ -1,13 +1,12 @@
 package pages;
 
-import actions.IOSActions;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends IOSActions {
+public class LoginPage extends BasePage {
 
     @iOSXCUITFindBy(id = "Email")
     private WebElement email;
@@ -32,7 +31,7 @@ public class LoginPage extends IOSActions {
 
     public HomePage login(String mail, String pass, String code) {
 
-        waitForElementVisibility(email);
+        waitForElementVisible(email);
         email.sendKeys(mail);
         password.sendKeys(pass);
         companyCode.sendKeys(code);
